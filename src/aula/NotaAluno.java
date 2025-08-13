@@ -16,17 +16,26 @@ public class NotaAluno {
 		return media;
 	}
 	
+	public String retornaNome() {
+		if(nome == null) {
+			return "ALUNO_SEM_NOME";
+		}else {
+			return nome;
+		}
+	}
+	
 	public void mostrarMedia() {
-		float media = calcularMedia();
-		System.out.println("O aluno " + nome + " tem a média " + media);
+		float media = calcularMedia();		
+		System.out.println("O aluno " + retornaNome() + " tem a média " + media);
+		
 	}
 	
 	public void mostrarResultado() {
 		float media = calcularMedia();
 		if(media >= 6) {
-			System.out.println("Aluno " + nome + " APROVADO");
+			System.out.println("Aluno " + retornaNome() + " APROVADO");
 		}else {
-			System.out.println("Aluno " + nome + " REPROVADO");
+			System.out.println("Aluno " + retornaNome() + " REPROVADO");
 		}
 	}
 	

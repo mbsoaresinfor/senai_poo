@@ -24,7 +24,12 @@ public class Calculadora {
 	}
 	
 	public void mostrarUltimaOperacao() {
-		System.out.println("Última operação: " + ultimaOperacao);
+		if(ultimaOperacao == null) {
+			System.out.println("NÃO FOI CHAMADO NENHUMA OPERAÇÃO");
+		}else {
+			System.out.println("Última operação: " + ultimaOperacao);
+		}
+		
 	}
 	
 	public void mostrarUltimosValores() {

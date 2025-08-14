@@ -13,11 +13,21 @@ public class NotaFiscal {
 	
 	public void relatorio() {
 		System.out.println("RELATÓRIO");
-		System.out.println("Item 1: " + nome1 + " Preço R$ " + preco1);
-		System.out.println("Item 2: " + nome2 + " Preço R$ " + preco2);
-		System.out.println("Item 3: " + nome3 + " Preço R$ " + preco3);
-		System.out.println("Item 4: " + nome4 + " Preço R$ " + preco4);
-		System.out.println("Item 5: " + nome5 + " Preço R$ " + preco5);
+		if(nome1 != null) {
+			System.out.println("Item 1: " + nome1 + " Preço R$ " + preco1);
+		}
+		if(nome2 != null) {
+			System.out.println("Item 2: " + nome2 + " Preço R$ " + preco2);
+		}
+		if(nome3 != null) {
+			System.out.println("Item 3: " + nome3 + " Preço R$ " + preco3);
+		}
+		if(nome4 != null) {
+			System.out.println("Item 4: " + nome4 + " Preço R$ " + preco4);
+		}
+		if(nome5 != null) {
+			System.out.println("Item 5: " + nome5 + " Preço R$ " + preco5);
+		}
 	}
 	
 	

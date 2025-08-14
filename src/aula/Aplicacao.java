@@ -35,7 +35,12 @@ public class Aplicacao {
 		
 		Calculadora calculadora = new Calculadora(); // instanciar.
 		calculadora.mostrarUltimaOperacao();
-		float soma = calculadora.somar(5f, 5f);
+		System.out.println("CALCULADORA ");
+		System.out.println("Digite o primeiro valor: ");
+		float v1 = TECLADO.nextFloat();
+		System.out.println("Digite o segundo valor: ");
+		float v2 = TECLADO.nextFloat();
+		float soma = calculadora.somar(v1, v2);
 		System.out.println("resultado soma 1 = " + soma);
 		calculadora.mostrarUltimaOperacao();
 		
@@ -45,6 +50,83 @@ public class Aplicacao {
 		System.out.println("resultado subtrair 2 = " + subtrair);
 		
 		// ###################
+		
+		Produto p1 = new Produto();
+		p1.preco = 101f;
+		p1.totalEstoque = 10;
+		float precoDesconto =  p1.calcularPrecoDesconto();
+		System.out.println("Preço desconto 1 = " + precoDesconto);
+		boolean ePrecoMaior1 =  p1.ePrecoMaior100();
+		if(ePrecoMaior1 == true) {
+			System.out.println("Preço é maior que 100");
+		}else {
+			System.out.println("Preço NÃO é maior que 100");
+		}
+		p1.temEstoque1();
+		
+		Produto p2 = new Produto();
+		p2.nome = "tv";
+		p2.preco = 200f;
+		p2.totalEstoque = 0;
+		float precoDesconto2 =  p2.calcularPrecoDesconto();
+		System.out.println("Preço desconto 2 = " + precoDesconto2);
+		p2.temEstoque1();
+		
+		// ###################
+		
+		NotaFiscal nf1 = new NotaFiscal();
+		nf1.nome1 = "tv";
+		nf1.nome2 = "som";
+		nf1.nome3 = "games";
+		nf1.nome4 = "geladeira";
+		nf1.nome5 = "fogão";
+		nf1.preco1 = 30;
+		nf1.preco2 = 40;
+		nf1.preco3 = 50;
+		nf1.preco4 = 60;
+		nf1.preco5 = 70;
+		nf1.totalNota();
+		nf1.relatorio();
+		
+		NotaFiscal nf2 = new NotaFiscal();
+		System.out.println("Digite o nome do item 1");
+		String item1 = TECLADO.next();
+		System.out.println("Digite o preco do item 1: " + item1);
+		float preco1 = TECLADO.nextFloat();
+		
+		System.out.println("Digite o nome do item 2");
+		String item2 = TECLADO.next();
+		System.out.println("Digite o preco do item 2: " + item2);
+		float preco2 = TECLADO.nextFloat();
+		
+		System.out.println("Digite o nome do item 3");
+		String item3 = TECLADO.next();
+		System.out.println("Digite o preco do item 3: " + item3);
+		float preco3 = TECLADO.nextFloat();
+		
+		nf2.nome1 = item1;
+		nf2.nome2 = item2;
+		nf2.nome3 = item3;
+		nf2.preco1 = preco1;
+		nf2.preco2 = preco2;
+		nf2.preco3 = preco3;
+		nf2.relatorio();
+		nf2.totalNota();
+				
+		
+		for(;;) { // LACO INFINITO
+			System.out.println("digite o nome do produto: ");
+			String nome = TECLADO.next();
+			Produto prod1 = new Produto();
+			prod1.nome = nome;
+			System.out.println("Digite SAIR para sair do sistema");
+			String opcao = TECLADO.next();
+			if(opcao.equals("SAIR")) {
+				break;
+			}
+			
+		}
+		
 	}
 
 }

@@ -3,10 +3,16 @@ package aula;
 public class Produto {
 
 	// caracteristicas = variaveis
+	int  codigo;
 	String nome;
 	float preco;
 	boolean temEstoque;
 	int totalEstoque;
+	
+	public Produto(String nome,float preco) {
+		this.nome = nome;
+		this.preco = preco;
+	} 
 	
 	// comportamentos = metodos = funções
 	

@@ -5,6 +5,11 @@ public class NotaAluno {
 	String nome;
 	float nota1,nota2;
 	
+	
+	public NotaAluno (String nome) {
+		this.nome = nome;
+	}
+	
 	// METODOS
 	public void mostrarNomeAluno() {
 		

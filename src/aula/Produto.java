@@ -1,13 +1,72 @@
 package aula;
 
+import java.util.Objects;
+
 public class Produto {
 
 	// caracteristicas = variaveis
-	int  codigo;
-	String nome;
-	float preco;
-	boolean temEstoque;
-	int totalEstoque;
+	private int  codigo;
+	private String nome;
+	private float preco;
+	private boolean temEstoque;
+	private int totalEstoque;
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(codigo);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Produto other = (Produto) obj;
+		return codigo == other.codigo;
+	}
+
+	public int getTotalEstoque() {
+		return totalEstoque;
+	}
+	
+	public void setTotalEstoque(int valor) {
+		totalEstoque = valor;
+	}
+	
+	public boolean getTemEstoque() {
+		return temEstoque;
+	}
+	
+	public void setTemEstoque(boolean valor) {
+		temEstoque = valor;
+	}
+	
+	public void setPreco(float valor) {
+		preco = valor;
+	}
+	
+	public float getPreco() {
+		return preco;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public void setNome(String valor) {
+		nome = valor;
+	}
+	
+	public int getCodigo() {
+		return codigo;
+	}
+	
+	public void setCodigo(int valor) {
+		codigo = valor;
+	}
 	
 	public Produto(String nome,float preco) {
 		this.nome = nome;

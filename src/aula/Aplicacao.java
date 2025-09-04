@@ -221,6 +221,14 @@ public class Aplicacao {
 				System.out.println("Produto não salvo :(");
 			}
 			
+		}else if(op.equals("2")) {
+			System.out.println("Relatório de Produtos");
+			for(Produto produto : modProduto.getListaProduto()) {
+				System.out.println("Código: " + produto.getCodigo());
+				System.out.println("Nome: " + produto.getNome());
+				System.out.println("Preço: " + produto.getPreco());
+				System.out.println("---------------------------");
+			}
 		}
 		
 	}

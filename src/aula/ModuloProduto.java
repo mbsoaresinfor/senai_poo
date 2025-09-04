@@ -1,10 +1,17 @@
 package aula;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 // classe que gerencia os produtos.
 public class ModuloProduto {
 
+	private ArrayList<Produto> listaProduto = new ArrayList<Produto>();
+	
+	public ArrayList<Produto> getListaProduto(){
+		return listaProduto;
+	}
+	
 	public boolean salvarProduto(String nome,float preco) {
 		if(nome.equals("") || nome.length() < 3 || nome.length() > 30) {
 			System.out.println("Nome invalido. "
@@ -19,9 +26,12 @@ public class ModuloProduto {
 		}
 		
 		Produto produto = new Produto(nome,preco);		
-		produto.codigo = new Random().nextInt();
-		// TODO aqui vamos salvar na memoria, quando trabalhamos com 
-		// as estruturas de dados.
+		produto.setCodigo(new Random().nextInt());
+		
+		listaProduto.add(produto);
+		System.out.println("adicionado produto " + produto.getNome() 
+			+ " na lista");
+		
 		return true;		
 	}
 	

@@ -230,6 +230,30 @@ public class Aplicacao {
 				System.out.println("---------------------------");
 			}
 		}
+		else if(op.equals("3")) {
+			System.out.println("Busca de Produtos");
+			System.out.println("Digite o código do produto: ");
+			Integer codigo = TECLADO.nextInt();
+			Produto produto = modProduto.buscarProduto(codigo);
+			if(produto == null) {
+				System.out.println("Produto não encontrado");
+			}else {
+				System.out.println("Produto Encontrado");
+				System.out.println("Nome: " + produto.getNome());
+				System.out.println("Preço: " + produto.getPreco());
+				System.out.println("---------------------------");
+			}
+		}else if(op.equals("4")) {
+			System.out.println("Remoção de Produtos");
+			System.out.println("Digite o código do produto: ");
+			Integer codigo = TECLADO.nextInt();
+			boolean resultado = modProduto.removerProduto(codigo);
+			if(resultado) {
+				System.out.println("Produto removido com sucesso");
+			}else {
+				System.out.println("Produto não removido");
+			}
+		}
 		
 	}
 

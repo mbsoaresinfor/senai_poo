@@ -12,6 +12,19 @@ public class ModuloProduto {
 		return listaProduto;
 	}
 	
+	public Produto buscarProduto(int codigo) {
+		for(Produto produto : listaProduto) {
+			if(codigo  == produto.getCodigo()) {
+				return produto;
+			}
+		}
+		return null;
+	}
+	public boolean removerProduto(int codigo) {
+		return listaProduto
+				.removeIf(obj -> obj.getCodigo() == codigo);		
+	}
+	
 	public boolean salvarProduto(String nome,float preco) {
 		if(nome.equals("") || nome.length() < 3 || nome.length() > 30) {
 			System.out.println("Nome invalido. "

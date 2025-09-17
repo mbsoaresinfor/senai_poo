@@ -28,5 +28,15 @@ public class ModuloCliente {
 		listaCliente.add(cliente);
 		return true;
 	}
+
+	public void gerarRelatorio() {
+		System.out.println("Relatório de Clientes");
+		for(Cliente cliente : listaCliente) {
+			System.out.println("Nome: " + cliente.getNome());
+			System.out.println("Cpf/Cnpj: " + cliente.getCnpj_cpf());
+			System.out.println("Endereço: " + cliente.getEndereco());			
+			System.out.println("---------------------------");
+		}		
+	}
 	
 }

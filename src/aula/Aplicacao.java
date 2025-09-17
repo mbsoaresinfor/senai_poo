@@ -11,6 +11,7 @@ public class Aplicacao {
 	static final String MODULO_VENDA = "4";
 	static final String SAIR = "5";
 	static ModuloProduto modProduto = new ModuloProduto();
+	static ModuloCliente modCliente = new ModuloCliente();
 	
 	public static void main(String[] args) {		
 		
@@ -208,6 +209,30 @@ public class Aplicacao {
 		System.out.println("4  Remoção de Cliente");
 		System.out.println("9  voltar");
 		String op = TECLADO.next();
+		if(op.equals("1")) {
+			System.out.println("Digite o nome do cliente");
+			String nome = TECLADO.nextLine();
+			System.out.println("Digite o cpf/cnpj do cliente");
+			String cpf_cnpj = TECLADO.nextLine();
+			System.out.println("Digite o email do cliente");
+			String email = TECLADO.nextLine();
+			System.out.println("Digite o endereco do cliente");
+			String endereco = TECLADO.nextLine();
+			
+			Cliente cliente = new Cliente();
+			cliente.setCnpj_cpf(cpf_cnpj);
+			cliente.setEmail(email);
+			cliente.setNome(nome);
+			cliente.setEndereco(endereco);
+			
+			boolean resultado =  modCliente.salvarCliente(cliente);
+			if(resultado == true) {
+				System.out.println("Cliente salvo com sucesso");
+			}else {
+				System.out.println("Cliente não salvo :(");
+			}
+			
+		}
 		
 	}
 
@@ -219,10 +244,11 @@ public class Aplicacao {
 		System.out.println("3  Busca de Produtos ");
 		System.out.println("4  Remoção de Produtos");
 		System.out.println("9  voltar");
-		String op = TECLADO.next();
+		String op = TECLADO.next();		
+		
 		if(op.equals("1")) {
 			System.out.println("Digite o nome do produto");
-			String nome = TECLADO.next();
+			String nome = TECLADO.nextLine();
 			System.out.println("Digite o preco do produto");
 			float preco = TECLADO.nextFloat();
 			boolean resultado =  modProduto.salvarProduto(nome, preco);

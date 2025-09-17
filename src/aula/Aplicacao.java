@@ -211,13 +211,13 @@ public class Aplicacao {
 		String op = TECLADO.next();
 		if(op.equals("1")) {
 			System.out.println("Digite o nome do cliente");
-			String nome = TECLADO.nextLine();
+			String nome = TECLADO.next();
 			System.out.println("Digite o cpf/cnpj do cliente");
-			String cpf_cnpj = TECLADO.nextLine();
+			String cpf_cnpj = TECLADO.next();
 			System.out.println("Digite o email do cliente");
-			String email = TECLADO.nextLine();
+			String email = TECLADO.next();
 			System.out.println("Digite o endereco do cliente");
-			String endereco = TECLADO.nextLine();
+			String endereco = TECLADO.next();
 			
 			Cliente cliente = new Cliente();
 			cliente.setCnpj_cpf(cpf_cnpj);
@@ -232,6 +232,8 @@ public class Aplicacao {
 				System.out.println("Cliente não salvo :(");
 			}
 			
+		}if(op.equals("2")) {			
+			modCliente.gerarRelatorio();
 		}
 		
 	}

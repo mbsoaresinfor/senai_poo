@@ -20,7 +20,7 @@ public class ModuloCliente {
 			System.out.println("nome deve ter entre 3 a 50 cararacters");
 			return false;
 		}
-		if(cliente.getEndereco().length() < 30) {
+		if(cliente.getEndereco().length() > 30) {
 			System.out.println("endere deve ter menos de 30 caracteres");
 			return false;
 		}
@@ -37,6 +37,21 @@ public class ModuloCliente {
 			System.out.println("Endereço: " + cliente.getEndereco());			
 			System.out.println("---------------------------");
 		}		
+	}
+	
+	public boolean removerCliente(String cpf_cnpj) {
+		Cliente cliente = new Cliente();
+		cliente.setCnpj_cpf(cpf_cnpj); // removendo pelo equals
+		return listaCliente.remove(cliente);
+	}
+	
+	public Cliente buscarCliente(String cpf_cnpj) {
+		for(Cliente cliente : listaCliente) {
+			if(cliente.getCnpj_cpf().equals(cpf_cnpj)) {
+				return cliente;
+			}
+		}
+		return null;
 	}
 	
 }

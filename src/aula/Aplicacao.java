@@ -171,7 +171,7 @@ public class Aplicacao {
 		//caloi.imprimirEstado();
 		
 		// INICIANDO PROJETO PRÁTICO
-			
+	
 		for(;;) {
 			System.out.println("PRINCIPAL");
 			System.out.println("1  MÓDULO PRODUTO");
@@ -183,7 +183,7 @@ public class Aplicacao {
 			if(op.equals(MODULO_PRODUTO)) {
 				processarModuloProduto();
 			}else if(op.equals(MODULO_CLIENTE)) {
-				System.out.println("EM DESENVOLVIMENTO");
+				processarModuloCliente();
 			}
 			else if(op.equals(MODULO_ESTOQUE)) {
 				System.out.println("EM DESENVOLVIMENTO");
@@ -198,6 +198,17 @@ public class Aplicacao {
 				System.out.println("DIGITE UMA OPÇÃO VÁLIDA");
 			}
 		}
+	}
+
+	private static void processarModuloCliente() {
+		System.out.println("MÓDULO CLIENTE");
+		System.out.println("1  Cadastro de Cliente");
+		System.out.println("2  Relatório de Cliente ");
+		System.out.println("3  Busca de Cliente ");
+		System.out.println("4  Remoção de Cliente");
+		System.out.println("9  voltar");
+		String op = TECLADO.next();
+		
 	}
 
 	// gerencia as operacoes de produto

@@ -39,10 +39,9 @@ public class ModuloCliente {
 		}		
 	}
 	
-	public boolean removerCliente(String cpf_cnpj) {
-		Cliente cliente = new Cliente();
-		cliente.setCnpj_cpf(cpf_cnpj); // removendo pelo equals
-		return listaCliente.remove(cliente);
+	public boolean removerCliente(String cpf_cnpj) {		
+		return listaCliente
+				.removeIf(obj -> obj.getCnpj_cpf().equals(cpf_cnpj));
 	}
 	
 	public Cliente buscarCliente(String cpf_cnpj) {

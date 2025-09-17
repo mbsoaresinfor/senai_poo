@@ -235,7 +235,31 @@ public class Aplicacao {
 		}if(op.equals("2")) {			
 			modCliente.gerarRelatorio();
 		}
-		
+		if(op.equals("3")) {			
+			System.out.println("Busca de Cliente");
+			System.out.println("Digite o cpf_cnpj do cliente: ");
+			String cpf_cnpj = TECLADO.next();
+			
+			Cliente cliente = modCliente.buscarCliente(cpf_cnpj);
+			if(cliente == null) {
+				System.out.println("Cliente não encontrado");
+			}else {
+				System.out.println("Cliente encontrado");
+				System.out.println("Nome: " + cliente.getNome());
+			}
+		}
+		if(op.equals("4")) {			
+			System.out.println("Remoção de Cliente");
+			System.out.println("Digite o cpf_cnpj do cliente: ");
+			String cpf_cnpj = TECLADO.next();
+			
+			boolean resutaldo = modCliente.removerCliente(cpf_cnpj);
+			if(resutaldo == false) {
+				System.out.println("Cliente não encontrado");
+			}else {
+				System.out.println("Cliente removido com sucesso");				
+			}
+		}	
 	}
 
 	// gerencia as operacoes de produto

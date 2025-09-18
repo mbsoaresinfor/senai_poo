@@ -8,8 +8,17 @@ public class Carro {
 	private String marca;
 	private int potencia;
 	private boolean estaParado;
+	private Motor motor;
 	
 	
+	public Motor getMotor() {
+		return motor;
+	}
+
+	public void setMotor(Motor motor) {
+		this.motor = motor;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(nome);

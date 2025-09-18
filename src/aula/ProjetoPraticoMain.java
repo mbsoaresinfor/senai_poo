@@ -2,7 +2,7 @@ package aula;
 
 import java.util.Scanner;
 
-public class Aplicacao {
+public class ProjetoPraticoMain {
 
 	static Scanner TECLADO = new Scanner(System.in);
 	static final String MODULO_PRODUTO = "1";

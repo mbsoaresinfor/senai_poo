@@ -12,7 +12,7 @@ public class ModuloCliente {
 			return false;
 		}
 		if(cliente.getCnpj_cpf().length() < 8) {
-			System.out.println("cpf deve ter mais de 8 caracteres");
+			System.out.println("cpf/cnpj deve ter mais de 8 caracteres");
 			return false;
 		}
 		if(cliente.getNome().length() < 3 
@@ -21,7 +21,7 @@ public class ModuloCliente {
 			return false;
 		}
 		if(cliente.getEndereco().length() > 30) {
-			System.out.println("endere deve ter menos de 30 caracteres");
+			System.out.println("endereço deve ter menos de 30 caracteres");
 			return false;
 		}
 		

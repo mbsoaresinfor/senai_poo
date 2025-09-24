@@ -12,6 +12,7 @@ public class ProjetoPraticoMain {
 	static final String SAIR = "5";
 	static ModuloProduto modProduto = new ModuloProduto();
 	static ModuloCliente modCliente = new ModuloCliente();
+	static ModuloEstoque modEstoque = new ModuloEstoque(modProduto);
 	
 	public static void main(String[] args) {		
 		
@@ -187,7 +188,7 @@ public class ProjetoPraticoMain {
 				processarModuloCliente();
 			}
 			else if(op.equals(MODULO_ESTOQUE)) {
-				System.out.println("EM DESENVOLVIMENTO");
+				processarModuloEstoque();
 			}
 			else if(op.equals(MODULO_VENDA)) {
 				System.out.println("EM DESENVOLVIMENTO");
@@ -198,6 +199,31 @@ public class ProjetoPraticoMain {
 			}else {
 				System.out.println("DIGITE UMA OPÇÃO VÁLIDA");
 			}
+		}
+	}
+
+	private static void processarModuloEstoque() {
+		System.out.println("MÓDULO ESTOQUE");
+		System.out.println("1  Cadastro de estoque");
+		System.out.println("2  Relatório de estoque ");
+		System.out.println("3  Busca no estoque ");
+		System.out.println("4  Atualização de estoque");
+		System.out.println("9  voltar");
+		String op = TECLADO.next();
+
+		if(op.equals("1")) {
+			System.out.println("Digite o código do produto");
+			int codigo = TECLADO.nextInt();
+			System.out.println("Digite a quantidade de itens do produto");
+			int quantidade = TECLADO.nextInt();
+			boolean resultado =  modEstoque.cadastarEstoque(codigo, quantidade);
+			if(resultado == true) {
+				System.out.println("Produto cadastro com sucesso no estoque");
+			}else {
+				System.out.println("Erro ao salvar no estoque. REfaça a operação");
+			}
+		}if(op.equals("2")) {
+			modEstoque.listarEstoque();
 		}
 	}
 
@@ -274,7 +300,7 @@ public class ProjetoPraticoMain {
 		
 		if(op.equals("1")) {
 			System.out.println("Digite o nome do produto");
-			String nome = TECLADO.nextLine();
+			String nome = TECLADO.next();
 			System.out.println("Digite o preco do produto");
 			float preco = TECLADO.nextFloat();
 			boolean resultado =  modProduto.salvarProduto(nome, preco);

@@ -2,9 +2,9 @@ package aula;
 
 import java.util.Objects;
 
+// classe base
 public class Cliente {
-
-	private String cnpj_cpf;	
+		
 	private String nome;
 	private String email;
 	private String endereco;
@@ -12,7 +12,7 @@ public class Cliente {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(cnpj_cpf, nome);
+		return Objects.hash(nome);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -23,15 +23,9 @@ public class Cliente {
 		if (getClass() != obj.getClass())
 			return false;
 		Cliente other = (Cliente) obj;
-		return Objects.equals(cnpj_cpf, other.cnpj_cpf) && Objects.equals(nome, other.nome);
+		return Objects.equals(nome, other.nome);
 	}
 	
-	public String getCnpj_cpf() {
-		return cnpj_cpf;
-	}
-	public void setCnpj_cpf(String cnpj_cpf) {
-		this.cnpj_cpf = cnpj_cpf;
-	}
 	public String getNome() {
 		return nome;
 	}

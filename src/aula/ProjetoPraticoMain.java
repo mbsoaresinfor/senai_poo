@@ -236,17 +236,36 @@ public class ProjetoPraticoMain {
 		System.out.println("9  voltar");
 		String op = TECLADO.next();
 		if(op.equals("1")) {
+			System.out.println("Deseja cadastrar "
+					+ "cliente fisico [1] ou cliente juridico [2]");
+			String tipoCliente = TECLADO.next();
+			Cliente cliente;
+			if(tipoCliente.equals("1")) {// cliente fisico
+				cliente = new ClienteFisica();
+				System.out.println("Digite o CPF "
+						+ "do cliente");
+				String cpf = TECLADO.next();
+				ClienteFisica cf = (ClienteFisica) cliente;
+				cf.setCpf(cpf);
+			}
+			else if(tipoCliente.equals("2")) {
+				cliente = new ClienteJuridico();
+				System.out.println("Digite o CNPJ "
+						+ "do cliente");
+				String cnpj = TECLADO.next();
+				ClienteJuridico cj = (ClienteJuridico)cliente;
+				cj.setCnpj(cnpj);
+			}else {
+				System.out.println("cliente invalido");
+				return;
+			}
 			System.out.println("Digite o nome do cliente");
-			String nome = TECLADO.next();
-			System.out.println("Digite o cpf/cnpj do cliente");
-			String cpf_cnpj = TECLADO.next();
+			String nome = TECLADO.next();			
 			System.out.println("Digite o email do cliente");
 			String email = TECLADO.next();
 			System.out.println("Digite o endereco do cliente");
 			String endereco = TECLADO.next();
-			
-			Cliente cliente = new Cliente();
-			cliente.setCnpj_cpf(cpf_cnpj);
+						
 			cliente.setEmail(email);
 			cliente.setNome(nome);
 			cliente.setEndereco(endereco);
@@ -263,7 +282,7 @@ public class ProjetoPraticoMain {
 		}
 		if(op.equals("3")) {			
 			System.out.println("Busca de Cliente");
-			System.out.println("Digite o cpf_cnpj do cliente: ");
+			System.out.println("Digite o nome do cliente: ");
 			String cpf_cnpj = TECLADO.next();
 			
 			Cliente cliente = modCliente.buscarCliente(cpf_cnpj);
@@ -276,7 +295,7 @@ public class ProjetoPraticoMain {
 		}
 		if(op.equals("4")) {			
 			System.out.println("Remoção de Cliente");
-			System.out.println("Digite o cpf_cnpj do cliente: ");
+			System.out.println("Digite o nome do cliente: ");
 			String cpf_cnpj = TECLADO.next();
 			
 			boolean resutaldo = modCliente.removerCliente(cpf_cnpj);

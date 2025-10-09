@@ -11,10 +11,26 @@ public class ModuloCliente {
 		if(cliente == null) {
 			return false;
 		}
-		if(cliente.getCnpj_cpf().length() < 8) {
-			System.out.println("cpf/cnpj deve ter mais de 8 caracteres");
-			return false;
+		
+		if(cliente instanceof ClienteFisica) {
+			//downcast
+			ClienteFisica cf = (ClienteFisica) cliente;
+			if(cf.getCpf().length() < 8) {
+				System.out.println("CPF deve"
+						+ " ter mais de 8 caracteres");
+				return false;
+			}
 		}
+		if(cliente instanceof ClienteJuridico) {
+			// downcast
+			ClienteJuridico cj = (ClienteJuridico) cliente;
+			if(cj.getCnpj().length() < 11) {
+				System.out.println("CNPJ deve"
+						+ " ter mais de 11 caracteres");
+				return false;
+			}
+		}
+				
 		if(cliente.getNome().length() < 3 
 				|| cliente.getNome().length() > 50) {
 			System.out.println("nome deve ter entre 3 a 50 cararacters");
@@ -33,20 +49,29 @@ public class ModuloCliente {
 		System.out.println("Relatório de Clientes");
 		for(Cliente cliente : listaCliente) {
 			System.out.println("Nome: " + cliente.getNome());
-			System.out.println("Cpf/Cnpj: " + cliente.getCnpj_cpf());
+			if(cliente instanceof ClienteFisica) {
+				ClienteFisica cf = (ClienteFisica) cliente;
+				System.out.println("CPF: " + cf.getCpf());
+			}
+			if(cliente instanceof ClienteJuridico) {
+				ClienteJuridico cj = (ClienteJuridico) cliente;
+				System.out.println("CNPJ: " + cj.getCnpj());
+			}
+			
 			System.out.println("Endereço: " + cliente.getEndereco());			
 			System.out.println("---------------------------");
 		}		
 	}
 	
-	public boolean removerCliente(String cpf_cnpj) {		
+	public boolean removerCliente(String nome) {		
 		return listaCliente
-				.removeIf(obj -> obj.getCnpj_cpf().equals(cpf_cnpj));
+				.removeIf(obj -> obj.getNome()
+						.equals(nome));
 	}
 	
-	public Cliente buscarCliente(String cpf_cnpj) {
+	public Cliente buscarCliente(String nome) {
 		for(Cliente cliente : listaCliente) {
-			if(cliente.getCnpj_cpf().equals(cpf_cnpj)) {
+			if(cliente.getNome().equals(nome)) {
 				return cliente;
 			}
 		}

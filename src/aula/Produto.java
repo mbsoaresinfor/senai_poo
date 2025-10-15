@@ -68,6 +68,7 @@ public class Produto {
 		codigo = valor;
 	}
 	
+	
 	public Produto(String nome,float preco) {
 		this.nome = nome;
 		this.preco = preco;

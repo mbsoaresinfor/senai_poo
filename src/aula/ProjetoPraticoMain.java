@@ -310,21 +310,48 @@ public class ProjetoPraticoMain {
 	// gerencia as operacoes de produto
 	private static void processarModuloProduto() {
 		System.out.println("MÓDULO PRODUTO");
-		System.out.println("1  Cadastro de Produto");
+		System.out.println("1.1  Cadastro de Produto Físico");
+		System.out.println("1.2  Cadastro de Produto Digital");
 		System.out.println("2  Relatório de Produtos ");
 		System.out.println("3  Busca de Produtos ");
 		System.out.println("4  Remoção de Produtos");
 		System.out.println("9  voltar");
 		String op = TECLADO.next();		
 		
-		if(op.equals("1")) {
+		if(op.equals("1.1")) {
 			System.out.println("Digite o nome do produto");
 			String nome = TECLADO.next();
 			System.out.println("Digite o preco do produto");
 			float preco = TECLADO.nextFloat();
-			boolean resultado =  modProduto.salvarProduto(nome, preco);
+			System.out.println("Digite o peso do produto");
+			long peso = TECLADO.nextLong();
+			System.out.println("Digite o tamanho do produto");
+			long tamanho = TECLADO.nextLong();
+			ProdutoFisico pf = new ProdutoFisico(nome, preco);
+			pf.setTamanho(tamanho);
+			pf.setPeso(peso);
+			boolean resultado =  modProduto
+					.salvarProduto(pf);
 			if(resultado == true) {
-				System.out.println("Produto salvo com sucesso");
+				System.out.println("Produto Fisico salvo com sucesso");
+			}else {
+				System.out.println("Produto não salvo :(");
+			}
+			
+		}if(op.equals("1.2")) {
+			System.out.println("Digite o nome do produto");
+			String nome = TECLADO.next();
+			System.out.println("Digite o preco do produto");
+			float preco = TECLADO.nextFloat();
+			System.out.println("Digite o tamanho do programa");
+			long peso = TECLADO.nextLong();
+			
+			ProdutoDigital pd = new ProdutoDigital(nome, preco);
+			pd.setTamanhoPrograma(peso);			
+			boolean resultado =  modProduto
+					.salvarProduto(pd);
+			if(resultado == true) {
+				System.out.println("Produto Digital salvo com sucesso");
 			}else {
 				System.out.println("Produto não salvo :(");
 			}
@@ -332,6 +359,12 @@ public class ProjetoPraticoMain {
 		}else if(op.equals("2")) {
 			System.out.println("Relatório de Produtos");
 			for(Produto produto : modProduto.getListaProduto()) {
+				if(produto instanceof ProdutoFisico) {
+					System.out.println("Produto Físico");
+				}
+				if(produto instanceof ProdutoDigital) {
+					System.out.println("Produto Digital");
+				}
 				System.out.println("Código: " + produto.getCodigo());
 				System.out.println("Nome: " + produto.getNome());
 				System.out.println("Preço: " + produto.getPreco());

@@ -6,7 +6,11 @@ public class ClienteJuridico
 
 	private String cnpj;
 	private String inscricaoEstadual;
-	
+		
+	@Override
+	public String getNome() {
+		return "Empresa: " + super.getNome();
+	}
 	public String getCnpj() {
 		return cnpj;
 	}

@@ -327,8 +327,11 @@ public class ProjetoPraticoMain {
 			long peso = TECLADO.nextLong();
 			System.out.println("Digite o tamanho do produto");
 			long tamanho = TECLADO.nextLong();
+			System.out.println("Digite o desconto do produto");
+			long desconto = TECLADO.nextLong();
 			ProdutoFisico pf = new ProdutoFisico(nome, preco);
 			pf.setTamanho(tamanho);
+			pf.setDesconto(desconto);
 			pf.setPeso(peso);
 			boolean resultado =  modProduto
 					.salvarProduto(pf);
@@ -345,9 +348,12 @@ public class ProjetoPraticoMain {
 			float preco = TECLADO.nextFloat();
 			System.out.println("Digite o tamanho do programa");
 			long peso = TECLADO.nextLong();
+			System.out.println("Digite o desconto do produto");
+			long desconto = TECLADO.nextLong();
 			
 			ProdutoDigital pd = new ProdutoDigital(nome, preco);
-			pd.setTamanhoPrograma(peso);			
+			pd.setTamanhoPrograma(peso);
+			pd.setDesconto(desconto);
 			boolean resultado =  modProduto
 					.salvarProduto(pd);
 			if(resultado == true) {

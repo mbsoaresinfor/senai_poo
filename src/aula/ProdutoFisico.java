@@ -24,6 +24,13 @@ public class ProdutoFisico extends Produto {
 	public void setTamanho(long tamanho) {
 		this.tamanho = tamanho;
 	}
+
+	@Override
+	public float getPreco() {
+		return super.getPreco() 
+				- (super.getDesconto() + 1);
+	}
+	
 	
 	
 

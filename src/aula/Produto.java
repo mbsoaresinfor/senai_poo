@@ -10,6 +10,7 @@ public class Produto {
 	private float preco;
 	private boolean temEstoque;
 	private int totalEstoque;
+	private float desconto;
 	
 	@Override
 	public int hashCode() {
@@ -69,6 +70,14 @@ public class Produto {
 	}
 	
 	
+	public float getDesconto() {
+		return desconto;
+	}
+
+	public void setDesconto(float desconto) {
+		this.desconto = desconto;
+	}
+
 	public Produto(String nome,float preco) {
 		this.nome = nome;
 		this.preco = preco;
@@ -109,18 +118,6 @@ public class Produto {
 	
 	
 	
-	public void mostrarNOme() {
-		System.out.println("Marcelo");
-	}
-	
-	
-	public int somar() {
-		return 5 + 5;
-	}
-	
-	public float somar2(float a, float b) {
-		return a + b;
-	}
 	
 	
 	

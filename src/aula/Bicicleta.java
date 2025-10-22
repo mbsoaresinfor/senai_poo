@@ -2,13 +2,12 @@ package aula;
 
 import java.util.Objects;
 
-public class Bicicleta {
+public class Bicicleta extends Veiculo{
 
 	private  int velocidade;
 	private int marcha;
 	
-	
-	
+		
 	
 	@Override
 	public int hashCode() {
@@ -69,6 +68,7 @@ public class Bicicleta {
 	}
 	
 	public void frear() {
-		System.out.println("A bicicleta está freando....");
+		System.out.println("A bicicleta "
+				+ "está pedalando, acelerando com esforço físico.");
 	}
 }

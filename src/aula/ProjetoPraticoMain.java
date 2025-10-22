@@ -224,7 +224,24 @@ public class ProjetoPraticoMain {
 			}
 		}if(op.equals("2")) {
 			modEstoque.listarEstoque();
+		}if(op.equals("3")) {
+			System.out.println("Digite o codigo do produto ");
+			int codigo = TECLADO.nextInt(); 
+			int quantidade = modEstoque.buscarProduto(codigo);
+			if(quantidade < 0) {
+				System.out.println("Produto não existe no sistema");				
+			}else {
+				System.out.println("Produto com código: " + codigo + 
+						" tem " + quantidade + " no estoque.");
+			}
+		}if(op.equals("4")) {
+			System.out.println("Digite o codigo do produto ");
+			int codigo = TECLADO.nextInt();
+			System.out.println("Digite a quantidade comprada");
+			int quantidade = TECLADO.nextInt();
+			modEstoque.atualizarEstoque(codigo, quantidade);			
 		}
+		
 	}
 
 	private static void processarModuloCliente() {

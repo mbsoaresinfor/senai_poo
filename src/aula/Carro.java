@@ -2,7 +2,7 @@ package aula;
 
 import java.util.Objects;
 
-public class Carro {
+public class Carro extends Veiculo{
 
 	private String nome;
 	private String marca;
@@ -10,7 +10,12 @@ public class Carro {
 	private boolean estaParado;
 	private Motor motor;
 	
-	
+	@Override
+	public void acelerar() {
+		System.out.println("O carro está "
+				+ "acelerando suavemente.");
+	}
+
 	public Motor getMotor() {
 		return motor;
 	}

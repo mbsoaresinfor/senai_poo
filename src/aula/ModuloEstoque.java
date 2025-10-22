@@ -49,4 +49,31 @@ public class ModuloEstoque {
 			System.out.println("-----------------------");
 		}
 	}
+	
+	public int buscarProduto(int codigoProduto) {
+		for(Estoque estoque : listaEstoque) {
+			if(estoque
+					.getProduto().getCodigo() == codigoProduto) {
+				return estoque.getQuantidade();
+			}
+		}
+		return -1;
+	}
+	
+	public void atualizarEstoque(int codigoProduto,
+				int quantidade) {
+		for(Estoque estoque : listaEstoque) {
+			if(estoque
+					.getProduto().getCodigo() == codigoProduto) {
+				int totalAtual = estoque.getQuantidade();
+				if(quantidade <= totalAtual) {
+					int totalNovo = totalAtual - quantidade;
+					estoque.setQuantidade(totalNovo);
+				}else{
+					System.out.println("Error: Quantidade é maior que o valor atual do estoque.");
+				}
+				
+			}
+		}
+	}
 }

@@ -18,6 +18,8 @@ public class PolimorfismoMain1 {
 		System.out
 		.println("Salario: " 
 		+ pessoa.getSalario());
+		System.out.println("salario com acrescimo: "
+				+ pessoa.calcularSalarioAcrescimo());
 	}
 
 }

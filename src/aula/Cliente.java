@@ -3,7 +3,7 @@ package aula;
 import java.util.Objects;
 
 // classe base
-public class Cliente {
+public abstract class Cliente {
 		
 	private String nome;
 	private String email;

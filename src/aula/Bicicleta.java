@@ -63,12 +63,16 @@ public class Bicicleta extends Veiculo{
 				velocidade + " e sua marcha é " + marcha);
 	}
 	
-	public void acelerar() {
-		System.out.println("A bicicleta vai acelerar....");
-	}
+	
 	
 	public void frear() {
 		System.out.println("A bicicleta "
 				+ "está pedalando, acelerando com esforço físico.");
+	}
+
+	@Override
+	public void acelerar() {
+		System.out.println("A bicicleta vai acelerar....");
+		
 	}
 }

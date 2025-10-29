@@ -28,6 +28,11 @@ public class ProdutoDigital
 		return super.getPreco() 
 				- (super.getDesconto() + 5);
 	}
+
+	@Override
+	public void tipoProduto() {
+		System.out.println("DIGITAL");
+	}
 	
 	
 	

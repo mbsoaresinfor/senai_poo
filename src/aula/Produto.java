@@ -2,7 +2,7 @@ package aula;
 
 import java.util.Objects;
 
-public class Produto {
+public abstract class Produto {
 
 	// caracteristicas = variaveis
 	private int  codigo;
@@ -115,6 +115,7 @@ public class Produto {
 		}
 	}
 	
+	public abstract void tipoProduto();
 	
 	
 	

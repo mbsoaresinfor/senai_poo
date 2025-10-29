@@ -1,9 +1,11 @@
 package aula;
 
-public class Pessoa {
+public abstract class Pessoa {
 
 	private float salario;
 
+	public abstract float calcularSalarioAcrescimo();
+	
 	public float getSalario() {
 		return salario;
 	}

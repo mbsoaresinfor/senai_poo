@@ -12,6 +12,7 @@ public class ExercicioAula12_2_Main {
 		Carro carro = new Carro("");
 		Bicicleta bike = new Bicicleta();
 		
+		
 		frotaMista.add(bike);
 		frotaMista.add(carro);
 		frotaMista.add(moto);
@@ -20,9 +21,9 @@ public class ExercicioAula12_2_Main {
 			v.acelerar();
 		}
 		
-		testarAceleracao(bike);
-		testarAceleracao(moto);
-		testarAceleracao(carro);
+//		testarAceleracao(bike);
+//		testarAceleracao(moto);
+//		testarAceleracao(carro);
 		
 
 	}

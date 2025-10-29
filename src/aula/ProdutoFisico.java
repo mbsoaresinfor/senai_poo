@@ -30,6 +30,11 @@ public class ProdutoFisico extends Produto {
 		return super.getPreco() 
 				- (super.getDesconto() + 1);
 	}
+
+	@Override
+	public void tipoProduto() {
+		System.out.println("FISICO");		
+	}
 	
 	
 	

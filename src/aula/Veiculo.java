@@ -1,9 +1,8 @@
 package aula;
 // classe base.. super classe, 
 // classe mae, pai
-public class Veiculo {
+// essa classe virou uma classe abstrata
+public abstract class Veiculo {
 
-	 public void acelerar() {
-		 System.out.println("O veículo está acelerando");
-	 }
+	 public abstract void acelerar();
 }

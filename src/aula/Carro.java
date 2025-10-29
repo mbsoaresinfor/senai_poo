@@ -10,11 +10,7 @@ public class Carro extends Veiculo{
 	private boolean estaParado;
 	private Motor motor;
 	
-	@Override
-	public void acelerar() {
-		System.out.println("O carro está "
-				+ "acelerando suavemente.");
-	}
+	
 
 	public Motor getMotor() {
 		return motor;
@@ -99,6 +95,12 @@ public class Carro extends Veiculo{
 		}else {
 			System.out.println("ESte carro NÃO é popular");
 		}
+	}
+
+	@Override
+	public void acelerar() {
+		System.out.println("O carro está acelerando suavemente.");
+		
 	}
 	
 }

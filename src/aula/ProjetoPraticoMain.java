@@ -329,7 +329,8 @@ public class ProjetoPraticoMain {
 		System.out.println("MÓDULO PRODUTO");
 		System.out.println("1.1  Cadastro de Produto Físico");
 		System.out.println("1.2  Cadastro de Produto Digital");
-		System.out.println("2  Relatório de Produtos ");
+		System.out.println("2.1  Relatório de Produtos - COMPLETO ");
+		System.out.println("2.2  Relatório de Produtos - SIMPLES ");
 		System.out.println("3  Busca de Produtos ");
 		System.out.println("4  Remoção de Produtos");
 		System.out.println("9  voltar");
@@ -379,20 +380,14 @@ public class ProjetoPraticoMain {
 				System.out.println("Produto não salvo :(");
 			}
 			
-		}else if(op.equals("2")) {
-			System.out.println("Relatório de Produtos");
-			for(Produto produto : modProduto.getListaProduto()) {
-				if(produto instanceof ProdutoFisico) {
-					System.out.println("Produto Físico");
-				}
-				if(produto instanceof ProdutoDigital) {
-					System.out.println("Produto Digital");
-				}
-				System.out.println("Código: " + produto.getCodigo());
-				System.out.println("Nome: " + produto.getNome());
-				System.out.println("Preço: " + produto.getPreco());
-				System.out.println("---------------------------");
-			}
+		}else if(op.equals("2.1")) {
+			RelatorioModuloProduto relatorioCompleto=
+					new RelatorioModuloProdutoImpl(modProduto);
+			relatorioCompleto.relatorioCompleto();
+		}else if(op.equals("2.2")) {
+			RelatorioModuloProduto relatorioCompleto=
+					new RelatorioModuloProdutoImpl(modProduto);
+			relatorioCompleto.relatorioSimples();
 		}
 		else if(op.equals("3")) {
 			System.out.println("Busca de Produtos");

@@ -23,11 +23,7 @@ public class ProdutoDigital
 		this.tamanhoPrograma = tamanhoPrograma;
 	}
 	
-	@Override
-	public float getPreco() {
-		return super.getPreco() 
-				- (super.getDesconto() + 5);
-	}
+
 
 	@Override
 	public void tipoProduto() {

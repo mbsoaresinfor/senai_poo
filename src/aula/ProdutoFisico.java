@@ -25,11 +25,7 @@ public class ProdutoFisico extends Produto {
 		this.tamanho = tamanho;
 	}
 
-	@Override
-	public float getPreco() {
-		return super.getPreco() 
-				- (super.getDesconto() + 1);
-	}
+	
 
 	@Override
 	public void tipoProduto() {

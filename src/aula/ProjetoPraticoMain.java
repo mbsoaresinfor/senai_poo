@@ -13,9 +13,10 @@ public class ProjetoPraticoMain {
 	static ModuloProduto modProduto = new ModuloProduto();
 	static ModuloCliente modCliente = new ModuloCliente();
 	static ModuloEstoque modEstoque = new ModuloEstoque(modProduto);
-	
-	public static void main(String[] args) {		
-		
+	static ModuloVenda modVenda = new ModuloVenda(modProduto, modEstoque,modCliente);
+
+	public static void main(String[] args) {
+
 		// instanciar uma classe (classe objeto = new classe())
 //		NotaAluno notaAluno = new NotaAluno();
 //		//notaAluno.nome = "marcelo";
@@ -23,7 +24,7 @@ public class ProjetoPraticoMain {
 //		notaAluno.nota2 = 7f;		
 //		notaAluno.mostrarMedia();
 //		notaAluno.mostrarResultado();
-				
+
 		// outro objeto
 //		NotaAluno notaAluno2 = new NotaAluno();
 //		notaAluno2.nome = "pedro";
@@ -38,9 +39,9 @@ public class ProjetoPraticoMain {
 //		notaAluno3.nota2 = 5f;		
 //		notaAluno3.mostrarMedia();
 //		notaAluno3.mostrarResultado();
-		
+
 		// ################
-		
+
 //		Calculadora calculadora = new Calculadora(); // instanciar.
 //		calculadora.mostrarUltimaOperacao();
 //		System.out.println("CALCULADORA ");
@@ -56,9 +57,9 @@ public class ProjetoPraticoMain {
 //		calculadora2.mostrarUltimosValores();
 //		float subtrair = calculadora2.subtrair(10f, 5f);
 //		System.out.println("resultado subtrair 2 = " + subtrair);
-		
+
 		// ###################
-		
+
 //		Produto p1 = new Produto();
 //		p1.preco = 101f;
 //		p1.totalEstoque = 10;
@@ -79,9 +80,9 @@ public class ProjetoPraticoMain {
 //		float precoDesconto2 =  p2.calcularPrecoDesconto();
 //		System.out.println("Preço desconto 2 = " + precoDesconto2);
 //		p2.temEstoque1();
-		
+
 		// ###################
-		
+
 //		NotaFiscal nf1 = new NotaFiscal();
 //		nf1.nome1 = "tv";
 //		nf1.nome2 = "som";
@@ -134,7 +135,7 @@ public class ProjetoPraticoMain {
 //			}
 //			
 //		}
-		
+
 //		Carro carro1 = new Carro();
 //		System.out.println("Digite o nome do carro ");
 //		carro1.nome = TECLADO.next();
@@ -169,12 +170,12 @@ public class ProjetoPraticoMain {
 //		carro2.eCarroPopular();
 //		carro2.situacaoCarro();		
 //		Bicicleta caloi = new Bicicleta(1,5);		
-		//caloi.acelerar();
-		//caloi.imprimirEstado();
-		
+		// caloi.acelerar();
+		// caloi.imprimirEstado();
+
 		// INICIANDO PROJETO PRÁTICO
-	
-		for(;;) {
+
+		for (;;) {
 			System.out.println("PRINCIPAL");
 			System.out.println("1  MÓDULO PRODUTO");
 			System.out.println("2  MÓDULO CLIENTE");
@@ -182,24 +183,66 @@ public class ProjetoPraticoMain {
 			System.out.println("4  MÓDULO VENDA");
 			System.out.println("5  SAIR");
 			String op = TECLADO.next();
-			if(op.equals(MODULO_PRODUTO)) {
+			if (op.equals(MODULO_PRODUTO)) {
 				processarModuloProduto();
-			}else if(op.equals(MODULO_CLIENTE)) {
+			} else if (op.equals(MODULO_CLIENTE)) {
 				processarModuloCliente();
-			}
-			else if(op.equals(MODULO_ESTOQUE)) {
+			} else if (op.equals(MODULO_ESTOQUE)) {
 				processarModuloEstoque();
-			}
-			else if(op.equals(MODULO_VENDA)) {
-				System.out.println("EM DESENVOLVIMENTO");
-			}
-			else if(op.equals(SAIR)) {
+			} else if (op.equals(MODULO_VENDA)) {
+				processarModuloVenda();
+			} else if (op.equals(SAIR)) {
 				System.out.println("ENCERRANDO O PROGRAMA");
 				System.exit(1);
-			}else {
+			} else {
 				System.out.println("DIGITE UMA OPÇÃO VÁLIDA");
 			}
 		}
+	}
+
+	private static void processarModuloVenda() {
+		System.out.println("MÓDULO VENDA");
+		System.out.println("1    Realizar venda ");
+		System.out.println("2.1  Relatório 1");
+		System.out.println("2.2  Relatório 2");
+		System.out.println("3  Total de vendas");
+		System.out.println("4  Maior Venda");
+		System.out.println("5  Menor Venda");
+		System.out.println("9  voltar");
+		String op = TECLADO.next();
+
+		if (op.equals("1")) {
+			Venda venda = new Venda();
+			System.out.println("Digite o nome do cliente");
+			String nomeCliente = TECLADO.next();
+			venda.setNomeCliente(nomeCliente);
+			while (true) {
+				System.out.println("Digite o código do produto");
+				int codigo = TECLADO.nextInt();
+				System.out.println("Digite a quantidade de itens do produto");
+				int quantidade = TECLADO.nextInt();
+				ItemVenda item = new ItemVenda();
+				item.setCodigoProduto(codigo);
+				item.setQuantidade(quantidade);
+				venda.adicionarItem(item);
+				System.out.println("Deseja continuar [s/n] ? Limite de 3 produtos por venda. ");
+				String cont = TECLADO.next();
+				if (cont.equalsIgnoreCase("n")) {
+					boolean ret = modVenda.realizarVenda(venda);
+					if(ret == false) {
+						System.out.println("Erro ao realizar a venda.");
+					}
+					break;
+				}
+			}
+		}
+		if (op.equals("2.1")) {
+			modVenda.relatorio1();
+		}
+		if (op.equals("2.2")) {
+			modVenda.relatorio2();
+		}
+
 	}
 
 	private static void processarModuloEstoque() {
@@ -211,37 +254,39 @@ public class ProjetoPraticoMain {
 		System.out.println("9  voltar");
 		String op = TECLADO.next();
 
-		if(op.equals("1")) {
+		if (op.equals("1")) {
 			System.out.println("Digite o código do produto");
 			int codigo = TECLADO.nextInt();
 			System.out.println("Digite a quantidade de itens do produto");
 			int quantidade = TECLADO.nextInt();
-			boolean resultado =  modEstoque.cadastarEstoque(codigo, quantidade);
-			if(resultado == true) {
+			boolean resultado = modEstoque.cadastarEstoque(codigo, quantidade);
+			if (resultado == true) {
 				System.out.println("Produto cadastro com sucesso no estoque");
-			}else {
+			} else {
 				System.out.println("Erro ao salvar no estoque. REfaça a operação");
 			}
-		}if(op.equals("2")) {
+		}
+		if (op.equals("2")) {
 			modEstoque.listarEstoque();
-		}if(op.equals("3")) {
+		}
+		if (op.equals("3")) {
 			System.out.println("Digite o codigo do produto ");
-			int codigo = TECLADO.nextInt(); 
+			int codigo = TECLADO.nextInt();
 			int quantidade = modEstoque.buscarProduto(codigo);
-			if(quantidade < 0) {
-				System.out.println("Produto não existe no sistema");				
-			}else {
-				System.out.println("Produto com código: " + codigo + 
-						" tem " + quantidade + " no estoque.");
+			if (quantidade < 0) {
+				System.out.println("Produto não existe no sistema");
+			} else {
+				System.out.println("Produto com código: " + codigo + " tem " + quantidade + " no estoque.");
 			}
-		}if(op.equals("4")) {
+		}
+		if (op.equals("4")) {
 			System.out.println("Digite o codigo do produto ");
 			int codigo = TECLADO.nextInt();
 			System.out.println("Digite a quantidade comprada");
 			int quantidade = TECLADO.nextInt();
-			modEstoque.atualizarEstoque(codigo, quantidade);			
+			modEstoque.atualizarEstoque(codigo, quantidade);
 		}
-		
+
 	}
 
 	private static void processarModuloCliente() {
@@ -252,76 +297,73 @@ public class ProjetoPraticoMain {
 		System.out.println("4  Remoção de Cliente");
 		System.out.println("9  voltar");
 		String op = TECLADO.next();
-		if(op.equals("1")) {
-			System.out.println("Deseja cadastrar "
-					+ "cliente fisico [1] ou cliente juridico [2]");
+		if (op.equals("1")) {
+			System.out.println("Deseja cadastrar " + "cliente fisico [1] ou cliente juridico [2]");
 			String tipoCliente = TECLADO.next();
 			Cliente cliente;
-			if(tipoCliente.equals("1")) {// cliente fisico
+			if (tipoCliente.equals("1")) {// cliente fisico
 				cliente = new ClienteFisica();
-				System.out.println("Digite o CPF "
-						+ "do cliente");
+				System.out.println("Digite o CPF " + "do cliente");
 				String cpf = TECLADO.next();
 				ClienteFisica cf = (ClienteFisica) cliente;
 				cf.setCpf(cpf);
-			}
-			else if(tipoCliente.equals("2")) {
+			} else if (tipoCliente.equals("2")) {
 				cliente = new ClienteJuridico();
-				System.out.println("Digite o CNPJ "
-						+ "do cliente");
+				System.out.println("Digite o CNPJ " + "do cliente");
 				String cnpj = TECLADO.next();
-				ClienteJuridico cj = (ClienteJuridico)cliente;
+				ClienteJuridico cj = (ClienteJuridico) cliente;
 				cj.setCnpj(cnpj);
-			}else {
+			} else {
 				System.out.println("cliente invalido");
 				return;
 			}
 			System.out.println("Digite o nome do cliente");
-			String nome = TECLADO.next();			
+			String nome = TECLADO.next();
 			System.out.println("Digite o email do cliente");
 			String email = TECLADO.next();
 			System.out.println("Digite o endereco do cliente");
 			String endereco = TECLADO.next();
-						
+
 			cliente.setEmail(email);
 			cliente.setNome(nome);
 			cliente.setEndereco(endereco);
-			
-			boolean resultado =  modCliente.salvarCliente(cliente);
-			if(resultado == true) {
+
+			boolean resultado = modCliente.salvarCliente(cliente);
+			if (resultado == true) {
 				System.out.println("Cliente salvo com sucesso");
-			}else {
+			} else {
 				System.out.println("Cliente não salvo :(");
 			}
-			
-		}if(op.equals("2")) {			
+
+		}
+		if (op.equals("2")) {
 			modCliente.gerarRelatorio();
 		}
-		if(op.equals("3")) {			
+		if (op.equals("3")) {
 			System.out.println("Busca de Cliente");
 			System.out.println("Digite o nome do cliente: ");
 			String cpf_cnpj = TECLADO.next();
-			
+
 			Cliente cliente = modCliente.buscarCliente(cpf_cnpj);
-			if(cliente == null) {
+			if (cliente == null) {
 				System.out.println("Cliente não encontrado");
-			}else {
+			} else {
 				System.out.println("Cliente encontrado");
 				System.out.println("Nome: " + cliente.getNome());
 			}
 		}
-		if(op.equals("4")) {			
+		if (op.equals("4")) {
 			System.out.println("Remoção de Cliente");
 			System.out.println("Digite o nome do cliente: ");
 			String cpf_cnpj = TECLADO.next();
-			
+
 			boolean resutaldo = modCliente.removerCliente(cpf_cnpj);
-			if(resutaldo == false) {
+			if (resutaldo == false) {
 				System.out.println("Cliente não encontrado");
-			}else {
-				System.out.println("Cliente removido com sucesso");				
+			} else {
+				System.out.println("Cliente removido com sucesso");
 			}
-		}	
+		}
 	}
 
 	// gerencia as operacoes de produto
@@ -334,9 +376,9 @@ public class ProjetoPraticoMain {
 		System.out.println("3  Busca de Produtos ");
 		System.out.println("4  Remoção de Produtos");
 		System.out.println("9  voltar");
-		String op = TECLADO.next();		
-		
-		if(op.equals("1.1")) {
+		String op = TECLADO.next();
+
+		if (op.equals("1.1")) {
 			System.out.println("Digite o nome do produto");
 			String nome = TECLADO.next();
 			System.out.println("Digite o preco do produto");
@@ -351,15 +393,15 @@ public class ProjetoPraticoMain {
 			pf.setTamanho(tamanho);
 			pf.setDesconto(desconto);
 			pf.setPeso(peso);
-			boolean resultado =  modProduto
-					.salvarProduto(pf);
-			if(resultado == true) {
+			boolean resultado = modProduto.salvarProduto(pf);
+			if (resultado == true) {
 				System.out.println("Produto Fisico salvo com sucesso");
-			}else {
+			} else {
 				System.out.println("Produto não salvo :(");
 			}
-			
-		}if(op.equals("1.2")) {
+
+		}
+		if (op.equals("1.2")) {
 			System.out.println("Digite o nome do produto");
 			String nome = TECLADO.next();
 			System.out.println("Digite o preco do produto");
@@ -368,52 +410,48 @@ public class ProjetoPraticoMain {
 			long peso = TECLADO.nextLong();
 			System.out.println("Digite o desconto do produto");
 			long desconto = TECLADO.nextLong();
-			
+
 			ProdutoDigital pd = new ProdutoDigital(nome, preco);
 			pd.setTamanhoPrograma(peso);
 			pd.setDesconto(desconto);
-			boolean resultado =  modProduto
-					.salvarProduto(pd);
-			if(resultado == true) {
+			boolean resultado = modProduto.salvarProduto(pd);
+			if (resultado == true) {
 				System.out.println("Produto Digital salvo com sucesso");
-			}else {
+			} else {
 				System.out.println("Produto não salvo :(");
 			}
-			
-		}else if(op.equals("2.1")) {
-			RelatorioModuloProduto relatorioCompleto=
-					new RelatorioModuloProdutoImpl(modProduto);
+
+		} else if (op.equals("2.1")) {
+			RelatorioModuloProduto relatorioCompleto = new RelatorioModuloProdutoImpl(modProduto);
 			relatorioCompleto.relatorioCompleto();
-		}else if(op.equals("2.2")) {
-			RelatorioModuloProduto relatorioCompleto=
-					new RelatorioModuloProdutoImpl(modProduto);
+		} else if (op.equals("2.2")) {
+			RelatorioModuloProduto relatorioCompleto = new RelatorioModuloProdutoImpl(modProduto);
 			relatorioCompleto.relatorioSimples();
-		}
-		else if(op.equals("3")) {
+		} else if (op.equals("3")) {
 			System.out.println("Busca de Produtos");
 			System.out.println("Digite o código do produto: ");
 			Integer codigo = TECLADO.nextInt();
 			Produto produto = modProduto.buscarProduto(codigo);
-			if(produto == null) {
+			if (produto == null) {
 				System.out.println("Produto não encontrado");
-			}else {
+			} else {
 				System.out.println("Produto Encontrado");
 				System.out.println("Nome: " + produto.getNome());
 				System.out.println("Preço: " + produto.getPreco());
 				System.out.println("---------------------------");
 			}
-		}else if(op.equals("4")) {
+		} else if (op.equals("4")) {
 			System.out.println("Remoção de Produtos");
 			System.out.println("Digite o código do produto: ");
 			Integer codigo = TECLADO.nextInt();
 			boolean resultado = modProduto.removerProduto(codigo);
-			if(resultado) {
+			if (resultado) {
 				System.out.println("Produto removido com sucesso");
-			}else {
+			} else {
 				System.out.println("Produto não removido");
 			}
 		}
-		
+
 	}
 
 }

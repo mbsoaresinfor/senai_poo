@@ -44,7 +44,7 @@ public class ModuloProduto {
 		
 		listaProduto.add(produto);
 		System.out.println("adicionado produto " + produto.getNome() 
-			+ " na lista");
+			+ " com codigo " + produto.getCodigo() + " na lista.");
 		
 		return true;		
 	}

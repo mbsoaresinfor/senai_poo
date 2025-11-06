@@ -7,10 +7,7 @@ public class ClienteFisica
 	private String cpf;
 	private String rg;
 	
-	@Override
-	public String getNome() {
-		return "Pessoa: " +  super.getNome();
-	}
+	
 	public String getCpf() {
 		return cpf;
 	}

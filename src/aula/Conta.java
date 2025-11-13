@@ -26,9 +26,11 @@ public class Conta {
 		return numeroConta == other.numeroConta;
 	}
 
-	public void sacar(float valor) {
+	public void sacar(float valor) throws SaldoInsuficienteException {
 		if(valor < saldo) {
 			saldo = saldo - valor;
+		}else {
+			throw new SaldoInsuficienteException("saldo insuficente: saldo atual" + saldo);
 		}
 	}
 	

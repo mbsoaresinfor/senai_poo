@@ -10,7 +10,7 @@ public class ContaCorrente
 	}
 
 	@Override
-	public void sacar(int valor) {
+	public void sacar(int valor) throws SaldoInsuficienteException {
 		System.out.println("sacando " + valor +
 				" na conta corrente");
 		

@@ -17,32 +17,31 @@ public class ModuloVenda {
 		this.moduloCliente = moduloCliente;
 	}
 	
-	public boolean realizarVenda(Venda venda) {
+	public void realizarVenda(Venda venda) 
+			throws RealizarVendaException {
+		
 		Cliente cliente = moduloCliente.buscarCliente(venda.getNomeCliente());
 		if(cliente == null) {
-			System.out.println("Cliente não existe para a realização da compra.");
-			return false;
+			throw new RealizarVendaException("Cliente não "
+					+ "existe para a realização da compra.");			
 		}
 		// verifica limite de itens por venda.
 		if(venda.totalItens() > 3) {
-			System.out.println("Limite de produtos na venda é 3");
-			return false;
+			throw new RealizarVendaException("Limite de produtos na venda é 3");			
 		}
 		// verifica se item (produto) existe no cadastro
 		for(ItemVenda item: venda.listaItensVenda()) {
 			Produto produto = moduloProduto.buscarProduto(item.getCodigoProduto());
 			if(produto == null) {
-				System.out.println("Produto de codigo "+ item.getCodigoProduto()+ " não existe");
-				return false;
+				throw new RealizarVendaException("Produto de codigo "+ item.getCodigoProduto()+ " não existe");				
 			}
 		}
 		// verifica se quantidade existe no estoque.
 		for(ItemVenda item: venda.listaItensVenda()) {
 			int quantEstoque = moduloEstoque.buscarProduto(item.getCodigoProduto());
 			if(item.getQuantidade() > quantEstoque) {
-				System.out.println("Item de codigo: " + item.getCodigoProduto() + " não "
-						+ "tem a quantidade " + item.getQuantidade() + " no estoque");
-				return false;
+				throw new RealizarVendaException("Item de codigo: " + item.getCodigoProduto() + " não "
+						+ "tem a quantidade " + item.getQuantidade() + " no estoque");				
 			}
 		}
 		// atualiza o estoque.
@@ -54,7 +53,6 @@ public class ModuloVenda {
 		listaVenda.add(venda);
 		System.out.println("Compra realizada com sucesso para o cliente " + cliente.getNome());		
 		
-		return true;
 	}
 	
 	public void relatorio1() {

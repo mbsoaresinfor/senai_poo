@@ -15,7 +15,12 @@ public class InterfaceMain {
 	}
 	
 	public static void sacar(ContaBancaria conta) {
-		conta.sacar(50);
+		try {
+			conta.sacar(50);
+		} catch (SaldoInsuficienteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public static void depositar(ContaBancaria conta) {

@@ -228,10 +228,13 @@ public class ProjetoPraticoMain {
 				System.out.println("Deseja continuar [s/n] ? Limite de 3 produtos por venda. ");
 				String cont = TECLADO.next();
 				if (cont.equalsIgnoreCase("n")) {
-					boolean ret = modVenda.realizarVenda(venda);
-					if(ret == false) {
-						System.out.println("Erro ao realizar a venda.");
-					}
+					try {
+						modVenda.realizarVenda(venda);
+					} catch (RealizarVendaException e) {
+						System.out.println("Erro ao realizar a venda."
+								+ e.getMessage());
+						e.printStackTrace();
+					}				
 					break;
 				}
 			}

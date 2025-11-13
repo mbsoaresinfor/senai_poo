@@ -47,6 +47,10 @@ public class Calculadora {
 		return sub;
 	}
 	
+	public int divisao(int a, int b) {
+		return a / b;
+	}
+	
 	public void mostrarUltimaOperacao() {
 		if(ultimaOperacao == null) {
 			System.out.println("NÃO FOI CHAMADO NENHUMA OPERAÇÃO");

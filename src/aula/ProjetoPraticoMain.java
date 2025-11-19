@@ -13,7 +13,7 @@ public class ProjetoPraticoMain {
 	static ModuloProduto modProduto = new ModuloProduto();
 	static ModuloCliente modCliente = new ModuloCliente();
 	static ModuloEstoque modEstoque = new ModuloEstoque(modProduto);
-	static ModuloVenda modVenda = new ModuloVenda(modProduto, modEstoque,modCliente);
+	static ModuloVenda modVenda = new ModuloVenda(modProduto, modEstoque, modCliente);
 
 	public static void main(String[] args) {
 
@@ -176,28 +176,33 @@ public class ProjetoPraticoMain {
 		// INICIANDO PROJETO PRÁTICO
 
 		for (;;) {
-			System.out.println("PRINCIPAL");
-			System.out.println("1  MÓDULO PRODUTO");
-			System.out.println("2  MÓDULO CLIENTE");
-			System.out.println("3  MÓDULO ESTOQUE");
-			System.out.println("4  MÓDULO VENDA");
-			System.out.println("5  SAIR");
-			String op = TECLADO.next();
-			if (op.equals(MODULO_PRODUTO)) {
-				processarModuloProduto();
-			} else if (op.equals(MODULO_CLIENTE)) {
-				processarModuloCliente();
-			} else if (op.equals(MODULO_ESTOQUE)) {
-				processarModuloEstoque();
-			} else if (op.equals(MODULO_VENDA)) {
-				processarModuloVenda();
-			} else if (op.equals(SAIR)) {
-				System.out.println("ENCERRANDO O PROGRAMA");
-				System.exit(1);
-			} else {
-				System.out.println("DIGITE UMA OPÇÃO VÁLIDA");
+			try {
+				System.out.println("PRINCIPAL");
+				System.out.println("1  MÓDULO PRODUTO");
+				System.out.println("2  MÓDULO CLIENTE");
+				System.out.println("3  MÓDULO ESTOQUE");
+				System.out.println("4  MÓDULO VENDA");
+				System.out.println("5  SAIR");
+				String op = TECLADO.next();
+				if (op.equals(MODULO_PRODUTO)) {
+					processarModuloProduto();
+				} else if (op.equals(MODULO_CLIENTE)) {
+					processarModuloCliente();
+				} else if (op.equals(MODULO_ESTOQUE)) {
+					processarModuloEstoque();
+				} else if (op.equals(MODULO_VENDA)) {
+					processarModuloVenda();
+				} else if (op.equals(SAIR)) {
+					System.out.println("ENCERRANDO O PROGRAMA");
+					System.exit(1);
+				} else {
+					System.out.println("DIGITE UMA OPÇÃO VÁLIDA");
+				}
+			} catch (Exception e) {
+				System.out.println("Ocorreu um erro," + " tente novamente: " + e.getMessage());
 			}
 		}
+
 	}
 
 	private static void processarModuloVenda() {
@@ -231,10 +236,9 @@ public class ProjetoPraticoMain {
 					try {
 						modVenda.realizarVenda(venda);
 					} catch (RealizarVendaException e) {
-						System.out.println("Erro ao realizar a venda."
-								+ e.getMessage());
+						System.out.println("Erro ao realizar a venda." + e.getMessage());
 						e.printStackTrace();
-					}				
+					}
 					break;
 				}
 			}
@@ -248,6 +252,21 @@ public class ProjetoPraticoMain {
 
 	}
 
+	private static long lerNumeroLong(String msg) {
+		System.out.println(msg);
+		while(true) {
+			try {
+				long resultado = TECLADO.nextLong();				
+				return resultado;
+			}catch (Exception e) {
+				System.out.println("vc digitou um valor "
+						+ "não long, digite novamente");
+				System.out.println(msg);
+				TECLADO = new Scanner(System.in);
+			}
+		}
+	}
+	
 	private static void processarModuloEstoque() {
 		System.out.println("MÓDULO ESTOQUE");
 		System.out.println("1  Cadastro de estoque");
@@ -384,8 +403,7 @@ public class ProjetoPraticoMain {
 		if (op.equals("1.1")) {
 			System.out.println("Digite o nome do produto");
 			String nome = TECLADO.next();
-			System.out.println("Digite o preco do produto");
-			float preco = TECLADO.nextFloat();
+			float preco = lerNumeroLong("Digite o preco do produto");
 			System.out.println("Digite o peso do produto");
 			long peso = TECLADO.nextLong();
 			System.out.println("Digite o tamanho do produto");

@@ -22,16 +22,28 @@ public class NotaFiscal {
 	}
 	
 	public void relatorio() {
-		String dados = "RELATÓRIO\n\n";
-		for(int cont=0; cont < nomesItens.length;cont++) {
-			dados.concat("Produto ")
-			.concat(Integer.toString(cont+1));
-			dados.concat(": ").concat(nomesItens[cont]);
-			dados.concat("\n").concat("Preço: ");
-			dados.concat(Float.toString(precosItens[cont]));
-			dados.concat("\n");
-			dados.concat("-----------------------");			
+		System.out.println("RELATÓRIO");
+		String dados = "";
+		String resultado = "";
+		for(int cont=0; cont < contador;cont++) {
+			resultado = dados.concat("Produto ")
+			.concat(Integer.toString(cont+1))
+			.concat(": ").concat(nomesItens[cont])
+			.concat("\n").concat("Preço: ")
+			.concat(Float.toString(precosItens[cont]))
+			.concat("\n")
+			.concat("-----------------------");
+			System.out.println(resultado);
 		}
-		System.out.println(dados);
+		
 	}
+	
+	public float calcularTotalNota() {
+		float total=0;
+		for(int i=0; i < contador;i++) {
+			total = total + precosItens[i];
+		}
+		return total;
+	}
+	
 }

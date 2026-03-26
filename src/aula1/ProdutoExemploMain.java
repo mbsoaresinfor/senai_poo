@@ -15,20 +15,20 @@ public class ProdutoExemploMain {
 				System.out.println("vetor cheio");
 				break;
 			}
-			Produto produto = new Produto();
+			Produto produto = null;
 			vetorProd[cont] = produto;
 			cont++;
 
 			System.out.println("Digite codigo do produto ");
-			produto.codigo = teclado.nextInt();
+			int codigo = teclado.nextInt();			
 			System.out.println("Digite nome do produto ");
-			produto.nome = teclado.next();
+			String nome = teclado.next();
 			System.out.println("Digite preço do produto ");
-			produto.preco = teclado.nextFloat();
+			Float preco = teclado.nextFloat();
 			System.out.println("Digite peso do produto ");
-			produto.peso = teclado.nextFloat();
-
-			System.out.println("O nome do produto = " + produto.nome);
+			Float peso = teclado.nextFloat();
+			produto = new Produto(codigo, nome,  preco,peso);
+			System.out.println("O nome do produto = " + produto.getNome());
 
 			produto.mostrarDescricao();
 			produto.verificarSeProdutoCaro();
@@ -55,7 +55,7 @@ public class ProdutoExemploMain {
 		boolean achou = false;
 		for (int i = 0; i < vetorProd.length; i++) {
 			Produto p = vetorProd[i];
-			if (p != null && p.codigo == codigo) {
+			if (p != null && p.getCodigo() == codigo) {
 				System.out.println("produto localizado");
 				achou = true;
 			}

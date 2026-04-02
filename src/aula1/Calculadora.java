@@ -6,7 +6,29 @@ public class Calculadora {
 	public String[] operacoes = new String[1000];
 	public int ind;
 	
+	public float somar(long v1,long v2) {
+		operacoes[ind] = "somar";
+		ind++;
+		operacao = "somar";
+		return v1 + v2;
+	}
+	
+	public float somar(int v1,int v2) {
+		operacoes[ind] = "somar";
+		ind++;
+		operacao = "somar";
+		
+		return v1 + v2;
+	}
+	
 	public float somar(float v1,float v2) {
+		operacoes[ind] = "somar";
+		ind++;
+		operacao = "somar";
+		return v1 + v2;
+	}
+	
+	public float somar(float v1,int v2) {
 		operacoes[ind] = "somar";
 		ind++;
 		operacao = "somar";

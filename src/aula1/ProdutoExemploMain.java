@@ -1,5 +1,6 @@
 package aula1;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ProdutoExemploMain {
@@ -8,16 +9,14 @@ public class ProdutoExemploMain {
 
 		Scanner teclado = new Scanner(System.in);
 
-		Produto[] vetorProd = new Produto[5];
-		int cont = 0;
+		//Produto[] vetorProd = new Produto[5];
+		ArrayList<Produto> listaProd
+			= new ArrayList<>();
+		//int cont = 0;
 		while (true) {
-			if (cont >= vetorProd.length) {
-				System.out.println("vetor cheio");
-				break;
-			}
-			Produto produto = null;
-			vetorProd[cont] = produto;
-			cont++;
+			
+			Produto produto = new Produto();
+			listaProd.add(produto);
 
 			System.out.println("Digite codigo do produto ");
 			int codigo = teclado.nextInt();			
@@ -42,20 +41,17 @@ public class ProdutoExemploMain {
 		}
 
 		// percorrendo todo vetor
-		for (int i = 0; i < vetorProd.length; i++) {
-			Produto p = vetorProd[i];
-			if (p != null) {
-				p.mostrarDescricao();
-			}
+		for (Produto produto : listaProd) {
+			produto.mostrarDescricao();			
 		}
 
 		// buscando no vetor pelo codigo
 		System.out.println("Digite codigo do produto para buscar");
 		int codigo = teclado.nextInt();
 		boolean achou = false;
-		for (int i = 0; i < vetorProd.length; i++) {
-			Produto p = vetorProd[i];
-			if (p != null && p.getCodigo() == codigo) {
+		for (Produto produto : listaProd) {
+			
+			if(produto.getCodigo() == codigo) {
 				System.out.println("produto localizado");
 				achou = true;
 			}

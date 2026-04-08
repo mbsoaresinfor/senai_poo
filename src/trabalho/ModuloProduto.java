@@ -31,7 +31,7 @@ public class ModuloProduto {
 		Produto produto = new Produto();
 		produto.setCodigo(codigo);
 		produto.setNome(nome);
-		produto.setCodigo(codigo);
+		produto.setPreco(preco);
 		lista.add(produto);
 		System.out.println("Produto cadastrado com sucesso");
 		

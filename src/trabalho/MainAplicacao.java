@@ -51,11 +51,11 @@ public class MainAplicacao {
 			if (op.equals("1")) {
 				moduloProduto.cadastrar();
 			} else if (op.equals("2")) {
-				// relatorio
+				moduloProduto.relatorio();
 			} else if (op.equals("3")) {
-				System.out.println("EM DESENVOLVIMENTO");
+				moduloProduto.buscar();
 			} else if (op.equals("4")) {
-				System.out.println("EM DESENVOLVIMENTO");
+				moduloProduto.remocao();
 			} else if (op.equals("5")) {
 				break;
 			} else {

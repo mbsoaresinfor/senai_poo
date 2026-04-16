@@ -1,5 +1,5 @@
 package aula1;
-
+import java.util.Objects;
 public class Cliente {
 
 	// definicao das variaveis

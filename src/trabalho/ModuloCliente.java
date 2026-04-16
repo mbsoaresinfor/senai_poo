@@ -42,7 +42,7 @@ public class ModuloCliente {
 		Endereco end =new Endereco();
 		end.setRua(rua);
 		cliente.setEndereco(end);
-	
+		lista.add(cliente);
 		
 		System.out.println("Cliente cadastrado com sucesso");
 		

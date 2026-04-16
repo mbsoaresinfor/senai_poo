@@ -7,6 +7,7 @@ public class MainAplicacao {
 	static Scanner teclado = new Scanner(System.in);
 	static ModuloProduto moduloProduto 
 		= new ModuloProduto();
+	static ModuloCliente moduloCliente = new ModuloCliente();
 	
 	public static void main(String[] args) {
 
@@ -22,7 +23,7 @@ public class MainAplicacao {
 			if (op.equals("1")) {
 				moduloProduto();
 			} else if (op.equals("2")) {
-				System.out.println("EM DESENVOLVIMENTO");
+				moduloCliente();
 			} else if (op.equals("3")) {
 				System.out.println("EM DESENVOLVIMENTO");
 			} else if (op.equals("4")) {
@@ -37,6 +38,32 @@ public class MainAplicacao {
 
 		System.out.println("PROGRAMA ENCERRADO");
 
+	}
+
+	private static void moduloCliente() {
+		while (true) {
+			System.out.println("MODULO CLIENTE");
+			System.out.println("1. Cadastro cliente");
+			System.out.println("2. Relatorio cliente");
+			System.out.println("3. Busca de cliente ");
+			System.out.println("4. Remoção de cliente");
+			System.out.println("5. Voltar");
+			String op = teclado.next();
+			if (op.equals("1")) {
+				moduloCliente.cadastrar();
+			} else if (op.equals("2")) {
+				moduloCliente.relatorio();
+			} else if (op.equals("3")) {
+				moduloCliente.buscar();
+			} else if (op.equals("4")) {
+				moduloCliente.remocao();
+			} else if (op.equals("5")) {
+				break;
+			} else {
+				System.out.println("opção invalida");
+			}
+		}
+		
 	}
 
 	private static void moduloProduto() {

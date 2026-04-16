@@ -7,6 +7,7 @@ public class Produto {
 	private String nome;
 	private float preco;
 	private float peso;
+	private Setor setor;
 	
 	public Produto() {}
 	
@@ -52,7 +53,14 @@ public class Produto {
 	public void setPeso(float peso) {
 		this.peso = peso;
 	}
-	
+
+	public void setSetor(Setor setor){
+		this.setor = setor;
+	}
+
+	public Setor getSetor(){
+		return setor;
+	}
 	// definicao dos metodos
 	
 	public void mostrarDescricao() {

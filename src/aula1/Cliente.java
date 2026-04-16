@@ -10,6 +10,7 @@ public class Cliente {
 	private String endereco;
 	private int idade;
 	private String nacionalidade;
+	private Endereco endereco;
 	
 	
 	
@@ -103,6 +104,14 @@ public class Cliente {
 		}else {
 			return "não idosa";
 		}
+	}
+
+	public void setEndereco(Endereco endereco){
+		this.endereco = endereco;
+	}
+
+	public Endereco getEndereco(){
+		return endereco;
 	}
 
 	

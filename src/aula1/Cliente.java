@@ -6,8 +6,7 @@ public class Cliente {
 	private String cpf;
 	private String cnpj; 
 	private String nome;
-	private String email;
-	private String endereco;
+	private String email;	
 	private int idade;
 	private String nacionalidade;
 	private Endereco endereco;
@@ -60,13 +59,6 @@ public class Cliente {
 		this.email = email;
 	}
 
-	public String getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
 
 	public int getIdade() {
 		return idade;

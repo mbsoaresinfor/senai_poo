@@ -1,6 +1,8 @@
 
 package aula1;
 
+
+
 import java.util.Objects;
 
 public class Endereco {
@@ -20,6 +22,15 @@ public class Endereco {
 	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(numero);

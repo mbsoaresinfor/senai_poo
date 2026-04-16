@@ -84,7 +84,7 @@ public class ModuloCliente {
 		String cpf = teclado.next();
 		
 		
-		boolean resultado = lista.removeIf(obj -> obj.getCnpj().equals(cpf));
+		boolean resultado = lista.removeIf(obj -> obj.getCpf().equals(cpf));
 		if(resultado) {
 			System.out.println("Cliente removido com sucesso");
 		}else {

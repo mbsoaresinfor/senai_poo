@@ -23,13 +23,7 @@ public class Endereco {
 		this.numero = numero;
 	}
 
-	public String getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
+	
 
 	@Override
 	public int hashCode() {

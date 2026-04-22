@@ -3,6 +3,8 @@ package trabalho;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import aula1.Produto;
+
 
 
 public class ModuloProduto {
@@ -64,6 +66,16 @@ public class ModuloProduto {
 		if(achou == false) {
 			System.out.println("Produto não localizado");			
 		}
+	}
+	
+	public Produto buscar(int codigo) {
+		
+		for(Produto produto : lista) {
+			if(codigo == produto.getCodigo()) {
+				return produto;
+			}
+		}
+		return null;
 	}
 
 	public void remocao() {

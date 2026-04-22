@@ -106,7 +106,6 @@ public class Cliente {
 		return endereco;
 	}
 
-	
 	@Override
 	public int hashCode() {
 		return Objects.hash(cpf);
@@ -123,5 +122,8 @@ public class Cliente {
 		Cliente other = (Cliente) obj;
 		return Objects.equals(cpf, other.cpf);
 	}
+
+	
+	
 	
 }

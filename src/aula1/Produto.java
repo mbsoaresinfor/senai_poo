@@ -5,7 +5,7 @@ public class Produto {
 	// definicao dos atributos
 	private int codigo;
 	private String nome;
-	private float preco;
+	private double preco;
 	private float peso;
 	private Setor setor;
 	
@@ -38,13 +38,10 @@ public class Produto {
 		this.nome = nome;
 	}
 	
-	public float getPreco() {
+	public double getPreco() {
 		return preco;
 	}
 	
-	public void setPreco(float preco) {
-		this.peso = preco;
-	}
 	
 	public float getPeso() {
 		return peso;
@@ -73,6 +70,10 @@ public class Produto {
 		}else {
 			System.out.println("Este produto é baratinho");
 		}
+	}
+
+	public void setPreco(double preco2) {
+		this.preco = preco2;
 	}
 	
 }

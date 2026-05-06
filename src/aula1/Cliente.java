@@ -1,10 +1,10 @@
 package aula1;
 import java.util.Objects;
-public class Cliente {
+public class Cliente { // CLASSE BASE/PAI, MAE
 
 	// definicao das variaveis
-	private String cpf;
-	private String cnpj; 
+//	private String cpf;
+//	private String cnpj; 
 	private String nome;
 	private String email;	
 	private int idade;
@@ -27,22 +27,7 @@ public class Cliente {
 		}		
 	}
 	
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public String getCnpj() {
-		return cnpj;
-	}
-
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
-	}
-
+	
 	public String getNome() {
 		return nome;
 	}
@@ -106,11 +91,7 @@ public class Cliente {
 		return endereco;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(cpf);
-	}
-
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -120,7 +101,7 @@ public class Cliente {
 		if (getClass() != obj.getClass())
 			return false;
 		Cliente other = (Cliente) obj;
-		return Objects.equals(cpf, other.cpf);
+		return Objects.equals(nome, other.nome);
 	}
 
 	

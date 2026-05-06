@@ -9,10 +9,10 @@ public class ComparacalhoObjetosMain {
 
 		
 		Cliente c1 = new Cliente();
-		c1.setCpf("ab");
+		//c1.setCpf("ab");
 		Cliente c2 = new Cliente();
 		Produto p = new Produto();
-		c2.setCpf("ab");
+		//c2.setCpf("ab");
 		
 		boolean resultado = c1.equals(c2);
 		

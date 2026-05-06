@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import aula1.Cliente;
+import aula1.ClienteFisico;
+import aula1.ClienteJuridico;
 import aula1.Endereco;
 
 
@@ -16,9 +18,23 @@ public class ModuloCliente {
 			new ArrayList<Cliente>();
 	
 	public void cadastrar() {
-		System.out.println("CADASTRO DE CLIENTE");		
-		System.out.println("Digite cpf ");
-		String  cpf = teclado.next();
+		String  cpf = null;
+		String  cnpj = null;
+		System.out.println("CADASTRO DE CLIENTE");
+		System.out.println("1. Cliente Fisico / 2. Cliente"
+				+ "Juridico");
+		int tpCliente = teclado.nextInt();
+		if(tpCliente == 1) {
+			System.out.println("Digite cpf ");
+		    cpf = teclado.next();
+		}else if(tpCliente == 2){
+			System.out.println("Digite cnpj ");
+			 cnpj = teclado.next();
+		}else {
+			System.out.println("tipo cliente invalido");
+			return;
+		}
+		
 		System.out.println("Digite nome ");
 		String nome = teclado.next();
 		System.out.println("Digite rua  ");
@@ -29,21 +45,45 @@ public class ModuloCliente {
 			return;
 		}
 		
-		Cliente clienteTestSeExiste = new Cliente();
-		clienteTestSeExiste.setCpf(cpf);
-		if(lista.contains(clienteTestSeExiste)) {
-			System.out.println("Cliente com cpf "  + cpf + " já existe.");
-					return;
+		
+		if(tpCliente == 1) {
+			ClienteFisico clienteTestSeExiste = 
+					new ClienteFisico();
+			clienteTestSeExiste.setCpf(cpf);
+			if(lista.contains(clienteTestSeExiste)) {
+				System.out.println("Cliente com cpf "  + cpf + " já existe.");
+						return;
+			}
+		   
+		}else if(tpCliente == 2){
+			ClienteJuridico clienteTestSeExiste = 
+					new ClienteJuridico();
+			clienteTestSeExiste.setCnpj(cnpj);
+			if(lista.contains(clienteTestSeExiste)) {
+				System.out.println("Cliente com cnpj " 
+			+ cnpj + " já existe.");
+						return;
+			}
 		}
 		
-		Cliente cliente = new Cliente();
-		cliente.setCpf(cpf);
-		cliente.setNome(nome);
-		Endereco end =new Endereco();
-		end.setRua(rua);
-		cliente.setEndereco(end);
-		lista.add(cliente);
-		
+		if(tpCliente == 1) {
+			ClienteFisico	cliente = new ClienteFisico();
+			cliente.setCpf(cpf);
+			cliente.setNome(nome);
+			Endereco end =new Endereco();
+			end.setRua(rua);
+			cliente.setEndereco(end);
+			lista.add(cliente);
+		}else {			
+			ClienteJuridico cliente = new ClienteJuridico();
+			cliente.setCnpj(cnpj);
+			cliente.setNome(nome);
+			Endereco end =new Endereco();
+			end.setRua(rua);
+			cliente.setEndereco(end);
+			lista.add(cliente);
+		}
+	
 		System.out.println("Cliente cadastrado com sucesso");
 		
 	}
@@ -52,7 +92,15 @@ public class ModuloCliente {
 		System.out.println("RELATÓRIO DE CLIENTES");
 		for(Cliente cliente : lista) {
 			System.out.println("Nome: " + cliente.getNome());
-			System.out.println("cpf: " + cliente.getCpf());
+			if(cliente instanceof ClienteFisico) {
+				ClienteFisico cf = (ClienteFisico) cliente;
+				System.out.println("cpf: " + cf.getCpf());
+					
+			}if(cliente instanceof ClienteJuridico) {
+				ClienteJuridico cj = (ClienteJuridico) cliente;
+				System.out.println("cnpj: " + cj.getCnpj());
+					
+			}
 			System.out.println("Rua : " + cliente.getEndereco().getRua());
 			System.out.println("---------------------------------");
 		}
@@ -60,14 +108,14 @@ public class ModuloCliente {
 
 	public void buscar() {
 		System.out.println("BUSCA DE CLIENTE");		
-		System.out.println("Digite CPF do cliente: ");
+		System.out.println("Digite nome do cliente: ");
 		String cpf = teclado.next();
 		
 		boolean achou = false;
 		for(Cliente cliente : lista) {
-			if(cpf.equals(cliente.getCpf())) {
+			if(cpf.equals(cliente.getNome())) {
 				System.out.println("Nome: " + cliente.getNome());
-				System.out.println("cpf: " + cliente.getCpf());
+				
 				System.out.println("Rua : " + cliente.getEndereco().getRua());
 				System.out.println("---------------------------------");
 				achou = true;
@@ -80,11 +128,11 @@ public class ModuloCliente {
 
 	public void remocao() {
 		System.out.println("REMOÇÃO DE PRODUTO");		
-		System.out.println("Digite CPF do cliente: ");
+		System.out.println("Digite nome do cliente: ");
 		String cpf = teclado.next();
 		
 		
-		boolean resultado = lista.removeIf(obj -> obj.getCpf().equals(cpf));
+		boolean resultado = lista.removeIf(obj -> obj.getNome().equals(cpf));
 		if(resultado) {
 			System.out.println("Cliente removido com sucesso");
 		}else {
